@@ -24,10 +24,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CollectionTypeControllerTest {
 
   @Autowired
-  MockMvc mockMvc;
+  private MockMvc mockMvc;
 
   @MockBean
-  CollectionTypeService collectionTypeService;
+  private CollectionTypeService collectionTypeService;
 
   @Test
   @DisplayName("Testa o retorno de getCollectionTypesCount quando count > 0")

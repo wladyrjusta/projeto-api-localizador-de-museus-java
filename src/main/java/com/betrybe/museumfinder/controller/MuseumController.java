@@ -8,7 +8,6 @@ import com.betrybe.museumfinder.dto.MuseumDto;
 import com.betrybe.museumfinder.model.Coordinate;
 import com.betrybe.museumfinder.model.Museum;
 import com.betrybe.museumfinder.service.MuseumServiceInterface;
-import javax.swing.text.html.HTML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,6 +69,19 @@ public class MuseumController {
     Coordinate coordinate = new Coordinate(lat, lng);
     Museum closestMuseum = museumService.getClosestMuseum(coordinate, maxDistKm);
     MuseumDto museumDto = modelToDto(closestMuseum);
+    return ResponseEntity.ok(museumDto);
+  }
+
+  /**
+   * Obtém o museu através do id.
+   *
+   * @param id o id do museu que deseja localizar.
+   * @return O museu de acordo com o id ou status 404.
+   */
+  @GetMapping("/{id}")
+  public ResponseEntity<MuseumDto> getMuseum(@PathVariable Long id) {
+    Museum museum = museumService.getMuseum(id);
+    MuseumDto museumDto = modelToDto(museum);
     return ResponseEntity.ok(museumDto);
   }
 }

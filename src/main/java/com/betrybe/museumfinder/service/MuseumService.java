@@ -66,8 +66,21 @@ public class MuseumService implements MuseumServiceInterface {
     }
   }
 
+  /**
+   * Obtém o museu através do id.
+   *
+   * @param id o id do museu que deseja localizar.
+   * @return O museu de acordo com o id.
+   * @throws MuseumNotFoundException Se nenhum museu for encontrado.
+   */
   @Override
   public Museum getMuseum(Long id) {
-    return new Museum();
+    Optional<Museum> museum = museumFakeDatabase.getMuseum(id);
+
+    if (museum.isEmpty()) {
+      throw new MuseumNotFoundException();
+    } else {
+      return museum.get();
+    }
   }
 }

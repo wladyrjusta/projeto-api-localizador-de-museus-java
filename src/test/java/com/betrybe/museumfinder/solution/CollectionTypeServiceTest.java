@@ -21,10 +21,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 public class CollectionTypeServiceTest {
 
   @Autowired
-  CollectionTypeService collectionTypeService;
+  private CollectionTypeService collectionTypeService;
 
   @MockBean
-  MuseumFakeDatabase database;
+  private MuseumFakeDatabase database;
 
   @Test
   @DisplayName("Testa o retorno de countByCollectionTypes recebendo dois types")
